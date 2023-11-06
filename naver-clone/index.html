@@ -62,8 +62,11 @@
       box-sizing: border-box;
     }
     html, body, form {
+      font-size: 10.5px;
+      line-height: 10.5px;
       margin: 0;
       padding: 0;
+      font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
     }
     #wrap {
       text-align: center;
@@ -196,6 +199,7 @@
         #search > form:hover {
           box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
         }
+
         #search-svg {
           display: flex;
           justify-content: center;
@@ -204,6 +208,20 @@
           margin-right: 12px;
           height: 100%;
           padding-left: 10px;
+          position: relative;
+        }
+        #search-svg::after {
+          display: none;
+        }
+        #search > form:focus-within #search-svg::after {
+          position: absolute;
+          display: inline-block;
+          right: 0;
+          top: 20px;
+          content: '';
+          width: 1px;
+          height: 20px;
+          background-color: #e4e4e4;
         }
         #search-svg svg {
           width: 24px;
@@ -215,7 +233,7 @@
           align-items: center;
           width: 480px;
           padding: 17px 0px;
-          font-size: 21px;
+          font-size: 2rem;
           line-height: 24px;
           font-weight: bold;
           border: none;
@@ -280,7 +298,7 @@
       <div id="search">
         <form action="">
           <a id="search-svg" href="#">
-            <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.273 12.845 3.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path></svg>
+            <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path></svg>
           </a>
           <label for="search-input" class="blind">검색어 입력</label>
           <input id="search-input" type="text" placeholder="검색어를 입력해 주세요." />
@@ -297,7 +315,114 @@
           </div>
         </form>
       </div>
-      <div id="nav"></div>
+      <style>
+        #nav > ul {
+          display: flex;
+          list-style-type: none;
+          justify-content: center;
+          font-size: 1.4rem;
+          line-height: 20px;
+        }
+        #nav a {
+          text-decoration: none;
+          text-align: center;
+        }
+        /* a태그 검색후 보라색 효과 삭제 */
+        #nav a:visited {
+          color: black;
+        }
+        #nav a div {
+          width: 44px;
+          height: 44px;
+          margin: 0 auto;
+        }
+        #nav a div::after {
+          content: '';
+          background-image: url(https://pm.pstatic.net/resources/asset/sp_main.2b96eea2.png);
+          background-size: 434px 414px;
+          background-position: -250px -90px;
+          background-repeat: no-repeat;
+          width: 44px;
+          height: 44px;
+          display: inline-block;
+        }
+        #nav li {
+          width: 64px;
+          /*자식 컨텐츠 height에 따라 부모 height 결정되기 때문에 안줘도 됨*/
+          margin-left: 4px;
+        }
+        /* li에 id 안쓰고 CSS 주기 */
+        #nav li:nth-of-type(1) {
+          margin-left: 0;
+        }
+        #nav li:nth-of-type(2) {
+
+        }
+      </style>
+      <div id="nav">
+        <ul>
+          <li>
+            <a href="">
+              <div></div>
+              <span>메일</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>카페</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>블로그</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>쇼핑</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>뉴스</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>증권</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>부동산</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>지도</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span>웹툰</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <div></div>
+              <span class="blind">더보기</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <div id="main"></div>
     </div>
   </div>
